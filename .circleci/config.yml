@@ -15,6 +15,11 @@ commands:
       - restore_cache:
           key: node-cache-v1-{{ checksum "package-lock.json" }}
       - run:
+          name: Install xvfb for Cypress
+          command: |
+            apt-get update
+            apt-get install -y xvfb
+      - run:
           name: Install node packages
           command: npm install
       - save_cache:
