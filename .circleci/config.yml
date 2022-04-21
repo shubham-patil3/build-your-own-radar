@@ -7,6 +7,7 @@ executors:
   base:
     docker:
       - image: cimg/node:14.19
+        user: root
 
 commands:
   install-node-packages:
@@ -105,6 +106,10 @@ workflows:
           filters:
             branches:
               only: circle-ci-setup
+      - approve-dev-deployment:
+          type: approval
+          requires:
+            - tests
       - dev-deployment:
           requires:
             - tests
