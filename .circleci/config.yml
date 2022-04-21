@@ -20,6 +20,7 @@ commands:
       - save_cache:
           paths:
             - ./node_modules
+            - ~/.cache/Cypress
           key: node-cache-v1-{{ checksum "package-lock.json" }}
   build-and-push:
     description: Build and push code to S3 bucket
