@@ -16,14 +16,14 @@ commands:
     description: Install node packages
     steps:
       - restore_cache:
-          key: node-cache-v1-{{ checksum "package-lock.json" }}
+          key: node-cache-v2-{{ checksum "package-lock.json" }}
       - run:
           name: Install node packages
           command: npm install
       - save_cache:
           paths:
             - ./node_modules
-          key: node-cache-v1-{{ checksum "package-lock.json" }}
+          key: node-cache-v2-{{ checksum "package-lock.json" }}
 
 jobs:
   tests:
